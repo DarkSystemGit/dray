@@ -3,7 +3,7 @@
 # dray
 
 dlang bindings to [redthing1 raylib](https://github.com/redthing1/raylib) **v5.0.0** (based on the official upstream [5.0.0 release](https://github.com/raysan5/raylib/releases/tag/5.0.0)).
-Forked to provide proper MacOS support (homebrew will be installed if necessary)
+Forked to provide proper MacOS support (homebrew will be installed if necessary).
 patches:
 + `raygui` included
 + HIDPI enabled
