@@ -15,6 +15,13 @@ PACKAGE_DIR=$(dirname "$0")
 # Utility variables
 LN="ln"
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    which -s brew
+    if [[ $? != 0 ]]; then
+        # Install Homebrew
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    brew install coreutils glew glfw
     LN="gln"
 fi
 
@@ -41,7 +48,7 @@ ensure_command "make"
 prepare() {
     echo "[$PROJECT] preparing $LIB_NAME source..."
     cd "$PACKAGE_DIR"
-    
+
     if [ -d $SOURCETREE_DIR ]; then
         echo "[$PROJECT] using existing source: $SOURCETREE_DIR"
     else
@@ -58,7 +65,7 @@ prepare() {
 build() {
     echo "[$PROJECT] starting build of $LIB_NAME"
     cd "$PACKAGE_DIR/$SOURCETREE_DIR"
-    
+
     # START BUILD
     if [ "$CLEAN" = "1" ]; then
         echo "[$PROJECT] cleaning $LIB_NAME build"
